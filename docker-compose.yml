@@ -9,19 +9,19 @@ services:
     networks:
       - yuuyu-network
     environment:
-      - APACHE_PORT=11000
-      - APACHE_IP_BINDING=127.0.0.1
+      # - APACHE_PORT=11000
+      # - APACHE_IP_BINDING=127.0.0.1
       - NEXTCLOUD_DATADIR=/mnt/VG1/LV1/nextcloud
       # - NEXTCLOUD_MOUNT=/mnt
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portainer.rule=Host(`cloud.yuuyu.dev`)"
-      - "traefik.http.routers.portainer.tls=true"
-      - "traefik.http.routers.portainer.entrypoints=websecure"
-      - "traefik.http.routers.portainer.tls.certresolver=lets-encrypt"
-      - "traefik.http.routers.portainer.service=portainer-service"
-      - "traefik.http.services.portainer-service.loadbalancer.server.port=11000"
-      # - "traefik.http.services.portainer-service.loadbalancer.server.scheme=https"
+      - "traefik.http.routers.nextcloud.rule=Host(`cloud.yuuyu.dev`)"
+      - "traefik.http.routers.nextcloud.tls=true"
+      - "traefik.http.routers.nextcloud.entrypoints=websecure"
+      - "traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt"
+      - "traefik.http.routers.nextcloud.service=nextcloud-service"
+      - "traefik.http.services.nextcloud-service.loadbalancer.server.port=8443"
+      - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
     restart: always
 networks:
   yuuyu-network:
