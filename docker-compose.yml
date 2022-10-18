@@ -12,6 +12,7 @@ services:
       - APACHE_PORT=11000
       - APACHE_IP_BINDING=0.0.0.0
       - NEXTCLOUD_DATADIR=/mnt/VG1/LV1/nextcloud
+      - SKIP_DOMAIN_VALIDATION=true
       # - NEXTCLOUD_MOUNT=/mnt
     labels:
       - "traefik.enable=true"
