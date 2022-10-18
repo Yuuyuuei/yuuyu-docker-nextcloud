@@ -13,7 +13,6 @@ services:
       - APACHE_IP_BINDING=127.0.0.1
       - NEXTCLOUD_DATADIR=/mnt/VG1/LV1/nextcloud
       - SKIP_DOMAIN_VALIDATION=true
-      # - NEXTCLOUD_MOUNT=/mnt
     labels:
       - "traefik.enable=true"
       # Cloud
@@ -22,8 +21,7 @@ services:
       - "traefik.http.routers.nextcloud.entrypoints=websecure"
       - "traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt"
       - "traefik.http.routers.nextcloud.service=nextcloud-service"
-      - "traefik.http.services.nextcloud-service.loadbalancer.server.port=11000"
-      # - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
+      - "traefik.http.services.nextcloud-service.loadbalancer.servers.url=http://localhost:11000"
       # AIO
       - "traefik.http.routers.nextcloud-aio.rule=Host(`aio.cloud.yuuyu.dev`)"
       - "traefik.http.routers.nextcloud-aio.tls=true"
