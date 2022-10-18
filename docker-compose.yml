@@ -9,8 +9,8 @@ services:
     networks:
       - yuuyu-network
     environment:
-      - APACHE_PORT=11000
-      - APACHE_IP_BINDING=0.0.0.0
+      # - APACHE_PORT=11000
+      # - APACHE_IP_BINDING=0.0.0.0
       - NEXTCLOUD_DATADIR=/mnt/VG1/LV1/nextcloud
       # - NEXTCLOUD_MOUNT=/mnt
     labels:
@@ -20,7 +20,7 @@ services:
       - "traefik.http.routers.nextcloud.entrypoints=websecure"
       - "traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt"
       - "traefik.http.routers.nextcloud.service=nextcloud-service"
-      - "traefik.http.services.nextcloud-service.loadbalancer.server.port=11000"
+      - "traefik.http.services.nextcloud-service.loadbalancer.server.port=8080"
       # - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
     restart: always
 networks:
