@@ -8,8 +8,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
       - yuuyu-network
-    # ports:
-    #   - 8080:8080
     environment:
       - APACHE_PORT=11000
       - APACHE_IP_BINDING=0.0.0.0
@@ -17,6 +15,14 @@ services:
       # - NEXTCLOUD_MOUNT=/mnt
     labels:
       - "traefik.enable=true"
+      # Cloud
+      - "traefik.http.routers.nextcloud.rule=Host(`cloud.yuuyu.dev`)"
+      - "traefik.http.routers.nextcloud.tls=true"
+      - "traefik.http.routers.nextcloud.entrypoints=websecure"
+      - "traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt"
+      - "traefik.http.routers.nextcloud.service=nextcloud-service"
+      - "traefik.http.services.nextcloud-service.loadbalancer.server.port=11000"
+      - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
       # AIO
       - "traefik.http.routers.nextcloud-aio.rule=Host(`aio.cloud.yuuyu.dev`)"
       - "traefik.http.routers.nextcloud-aio.tls=true"
