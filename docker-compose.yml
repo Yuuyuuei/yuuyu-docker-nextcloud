@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   nextcloud:
-    container_name: yuuyu-NextCloud
+    container_name: nextcloud-aio-mastercontainer
     image: nextcloud/all-in-one:latest
     volumes:
       - nextcloud_aio_mastercontainer:/mnt/docker-aio-config 
