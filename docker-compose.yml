@@ -21,7 +21,7 @@ services:
       - "traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt"
       - "traefik.http.routers.nextcloud.service=nextcloud-service"
       - "traefik.http.services.nextcloud-service.loadbalancer.server.port=11000"
-      - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
+      # - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
     restart: always
 networks:
   yuuyu-network:
