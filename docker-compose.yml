@@ -4,7 +4,7 @@ services:
     container_name: yuuyu-Nextcloud
     image: nextcloud:fpm-alpine
     volumes:
-      - ./data/nextcloud:/var/www/html
+      - ./data/nextcloud/data:/var/www/html
       - ${DATA_DIR}:/var/www/html/data
     depends_on:
       - redis
