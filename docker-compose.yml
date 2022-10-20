@@ -13,15 +13,6 @@ services:
       # - network
     environment:
       - REDIS_HOST=redis
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.nextcloud.rule=Host(`cloud.yuuyu.dev`)"
-      - "traefik.http.routers.nextcloud.tls=true"
-      - "traefik.http.routers.nextcloud.entrypoints=websecure"
-      - "traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt"
-      - "traefik.http.routers.nextcloud.service=nextcloud-service"
-      - "traefik.http.services.nextcloud-service.loadbalancer.server.port=9000"
-      # - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
     restart: always
   nginx:
     container_name: yuuyu-Nextcloud-Nginx
@@ -34,6 +25,15 @@ services:
     networks:
       - yuuyu-network
       # - network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextcloud.rule=Host(`cloud.yuuyu.dev`)"
+      - "traefik.http.routers.nextcloud.tls=true"
+      - "traefik.http.routers.nextcloud.entrypoints=websecure"
+      - "traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt"
+      - "traefik.http.routers.nextcloud.service=nextcloud-service"
+      - "traefik.http.services.nextcloud-service.loadbalancer.server.port=9000"
+      # - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
     restart: always
   cron:
     container_name: yuuyu-Nextcloud-Cron
