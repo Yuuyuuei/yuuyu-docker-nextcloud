@@ -9,6 +9,7 @@ services:
     depends_on:
       - redis
     networks:
+      - yuuyu-network
       - yuuyu-nextcloud-network
     environment:
       - REDIS_HOST=redis
@@ -41,6 +42,7 @@ services:
       - ./data/nextcloud:/var/www/html
     entrypoint: /cron.sh
     networks:
+      - yuuyu-network
       - yuuyu-nextcloud-network
     depends_on:
       - redis
