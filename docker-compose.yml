@@ -5,7 +5,7 @@ services:
     image: nextcloud:fpm-alpine
     volumes:
       - ./data/nextcloud:/var/www/html
-      - ${DATA_DIR}:/var/www/html/data
+      - ${DATA_DIR}:/var/www/html/data:z
     depends_on:
       - redis
     networks:
