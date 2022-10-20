@@ -2,7 +2,7 @@ version: '3.8'
 services:
   nextcloud:
     container_name: yuuyu-Nextcloud
-    image: nextcloud:fpm
+    image: nextcloud:fpm-alpine
     volumes:
       - ./data/nextcloud:/var/www/html
       - ${DATA_DIR}:/var/www/html/data
