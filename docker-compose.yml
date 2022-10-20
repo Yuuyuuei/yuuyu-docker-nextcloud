@@ -9,7 +9,8 @@ services:
     depends_on:
       - redis
     networks:
-      - network
+      - yuuyu-network
+      # - network
     environment:
       - REDIS_HOST=redis
     labels:
@@ -32,7 +33,7 @@ services:
       - nextcloud
     networks:
       - yuuyu-network
-      - network
+      # - network
     restart: always
   cron:
     container_name: yuuyu-Nextcloud-Cron
@@ -41,7 +42,8 @@ services:
       - ./data/nextcloud:/var/www/html
     entrypoint: /cron.sh
     networks:
-      - network
+      - yuuyu-network
+      # - network
     depends_on:
       - redis
     restart: always
@@ -49,7 +51,8 @@ services:
     container_name: yuuyu-Nextcloud-Redis
     image: redis:alpine
     networks:
-      - network
+      - yuuyu-network
+      # - network
     restart: always
 networks:
   network:
