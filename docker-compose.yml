@@ -9,8 +9,7 @@ services:
     depends_on:
       - redis
     networks:
-      - yuuyu-network
-      # - network
+      - yuuyu-nextcloud-network
     environment:
       - REDIS_HOST=redis
     restart: always
@@ -24,7 +23,7 @@ services:
       - nextcloud
     networks:
       - yuuyu-network
-      # - network
+      - yuuyu-nextcloud-network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nextcloud.rule=Host(`cloud.yuuyu.dev`)"
@@ -42,8 +41,7 @@ services:
       - ./data/nextcloud:/var/www/html
     entrypoint: /cron.sh
     networks:
-      - yuuyu-network
-      # - network
+      - yuuyu-nextcloud-network
     depends_on:
       - redis
     restart: always
@@ -51,10 +49,9 @@ services:
     container_name: yuuyu-Nextcloud-Redis
     image: redis:alpine
     networks:
-      - yuuyu-network
-      # - network
+      - yuuyu-nextcloud-network
     restart: always
 networks:
-  network:
+  yuuyu-nextcloud-network:
   yuuyu-network:
     external: true
