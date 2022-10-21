@@ -20,7 +20,6 @@ services:
     volumes:
       - ./data/nextcloud:/var/www/html:ro
       - ./data/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./data/certbot/conf:/etc/letsencrypt:ro
     depends_on:
       - nextcloud
     networks:
@@ -36,13 +35,6 @@ services:
       - "traefik.http.services.nextcloud-service.loadbalancer.server.port=443"
       - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
     restart: always
-  certbot:
-    image: certbot/certbot
-    container_name: yuuyu-Nextcloud-Nginx-Certbot
-    volumes: 
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    command: certonly --webroot -w /var/www/certbot --force-renewal --email admin@yuuyu.dev -d cloud.yuuyu.dev --agree-tos
   redis:
     container_name: yuuyu-Nextcloud-Redis
     image: redis:alpine
