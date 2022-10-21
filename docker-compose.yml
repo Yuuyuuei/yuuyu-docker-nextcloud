@@ -12,6 +12,7 @@ services:
       - yuuyu-nextcloud-network
     environment:
       - REDIS_HOST=redis
+      - OVERWRITEPROTOCOL=https
     restart: always
   nginx:
     container_name: yuuyu-Nextcloud-Nginx
