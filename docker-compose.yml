@@ -9,6 +9,7 @@ services:
     depends_on:
       - redis
     networks:
+      - yuuyu-network
       - yuuyu-nextcloud-network
     environment:
       - REDIS_HOST=redis
