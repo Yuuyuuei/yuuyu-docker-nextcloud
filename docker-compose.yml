@@ -14,27 +14,6 @@ services:
     environment:
       - REDIS_HOST=redis
     restart: always
-  nginx:
-    container_name: yuuyu-Nextcloud-Nginx
-    image: nginx:latest
-    volumes:
-      - ./data/nextcloud:/var/www/html:ro
-      - ./data/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - nextcloud
-    networks:
-      - yuuyu-network
-      - yuuyu-nextcloud-network
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.nextcloud.rule=Host(`cloud.yuuyu.dev`)"
-      - "traefik.http.routers.nextcloud.tls=true"
-      - "traefik.http.routers.nextcloud.entrypoints=websecure"
-      - "traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt"
-      - "traefik.http.routers.nextcloud.service=nextcloud-service"
-      - "traefik.http.services.nextcloud-service.loadbalancer.server.port=443"
-      - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
-    restart: always
   redis:
     container_name: yuuyu-Nextcloud-Redis
     image: redis:alpine
