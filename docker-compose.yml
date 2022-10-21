@@ -32,20 +32,8 @@ services:
       - "traefik.http.routers.nextcloud.entrypoints=websecure"
       - "traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt"
       - "traefik.http.routers.nextcloud.service=nextcloud-service"
-      - "traefik.http.services.nextcloud-service.loadbalancer.server.port=80"
-      # - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
-    restart: always
-  cron:
-    container_name: yuuyu-Nextcloud-Cron
-    image: nextcloud:fpm-alpine
-    volumes:
-      - ./data/nextcloud:/var/www/html
-    entrypoint: /cron.sh
-    networks:
-      - yuuyu-network
-      - yuuyu-nextcloud-network
-    depends_on:
-      - redis
+      - "traefik.http.services.nextcloud-service.loadbalancer.server.port=443"
+      - "traefik.http.services.nextcloud-service.loadbalancer.server.scheme=https"
     restart: always
   redis:
     container_name: yuuyu-Nextcloud-Redis
