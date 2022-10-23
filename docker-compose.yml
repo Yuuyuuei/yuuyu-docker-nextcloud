@@ -28,6 +28,7 @@ services:
       - yuuyu-nextcloud-network
     restart: always
   cron:
+    container_name: yuuyu-Nextcloud-Cron
     image: nextcloud:fpm-alpine
     restart: always
     volumes:
