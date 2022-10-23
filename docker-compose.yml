@@ -30,6 +30,8 @@ services:
   redis:
     container_name: yuuyu-Nextcloud-Redis
     image: redis:alpine
+    volumes:
+      - ./dara/redis/data:/data
     networks:
       - yuuyu-nextcloud-network
     restart: always
