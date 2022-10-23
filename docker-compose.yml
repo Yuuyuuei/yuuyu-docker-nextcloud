@@ -27,6 +27,17 @@ services:
       - yuuyu-network
       - yuuyu-nextcloud-network
     restart: always
+  cron:
+    image: nextcloud:fpm-alpine
+    restart: always
+    volumes:
+      - ./data/nextcloud:/var/www/html
+    entrypoint: /cron.sh
+    depends_on:
+      - redis
+    networks:
+      - yuuyu-network
+      - yuuyu-nextcloud-network
   redis:
     container_name: yuuyu-Nextcloud-Redis
     image: redis:alpine
