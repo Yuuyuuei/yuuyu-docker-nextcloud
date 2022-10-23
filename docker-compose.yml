@@ -33,6 +33,7 @@ services:
     restart: always
     volumes:
       - ./data/nextcloud:/var/www/html
+      - ${DATA_DIR}:/var/www/html/data
     entrypoint: /cron.sh
     depends_on:
       - redis
