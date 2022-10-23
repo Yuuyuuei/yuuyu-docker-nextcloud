@@ -14,6 +14,7 @@ services:
     environment:
       - REDIS_HOST=redis
       - OVERWRITEPROTOCOL=https
+      - NEXTCLOUD_UPDATE=1
     restart: always
   nginx:
     container_name: yuuyu-Nextcloud-Nginx

@@ -1,3 +1,8 @@
 # Install php-imagick
-docker-compose exec nextcloud apt -y update
-docker-compose exec nextcloud apt -y install php-imagick imagemagick
+docker-compose exec nextcloud apk add --no-cache imagemagick
+
+# Install Samba
+docker-compose exec nextcloud apk add --no-cache samba-client
+
+# Install ffmpeg
+docker-compose exec nextcloud apk add --no-cache ffmpeg
