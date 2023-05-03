@@ -1,4 +1,10 @@
-### Expected .env
+## Cloudflared Tunnel
+Connect tunnel to nginx:80
+
+## Run setup.sh (optional)
+Run setup.sh to install additional apks
+
+## Expected .env
 
 ```
 MYSQL_DATABASE=database
