@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     depends_on:
       - db
-      - redis
+      # - redis
     environment:
       - MYSQL_HOST=db
       - MYSQL_USER=${MYSQL_USER}
@@ -34,7 +34,7 @@ services:
     entrypoint: /cron.sh
     depends_on:
       - db
-      - redis
+      # - redis
   db:
     image: mariadb:latest
     volumes:
@@ -61,4 +61,4 @@ services:
 volumes:
   data:
   db:
-  cache:
+  # cache:
