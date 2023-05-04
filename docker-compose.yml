@@ -36,7 +36,7 @@ services:
       - db
       - redis
   db:
-    image: bitnami/mariadb:latest
+    image: mariadb:latest
     volumes:
       - db:/var/lib/mysql
     restart: unless-stopped
@@ -45,13 +45,13 @@ services:
       - MARIADB_USER=${MYSQL_USER}
       - MARIADB_PASSWORD=${MYSQL_PASSWORD}
       - MARIADB_DATABASE=${MYSQL_DATABASE}
-  redis:
-    image: bitnami/redis:latest
-    restart: unless-stopped
-    volumes:
-      - cache:/bitnami/redis/data
-    environment:
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
+  # redis:
+  #   image: bitnami/redis:latest
+  #   restart: unless-stopped
+  #   volumes:
+  #     - cache:/bitnami/redis/data
+  #   environment:
+  #     - REDIS_PASSWORD=${REDIS_PASSWORD}
   tunnel:
     image: cloudflare/cloudflared
     restart: unless-stopped
