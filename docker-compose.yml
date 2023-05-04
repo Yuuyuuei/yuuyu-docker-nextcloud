@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   nextcloud:
-    image: nextcloud:25-fpm-alpine
+    image: nextcloud:fpm-alpine
     volumes:
       - data:/var/www/html
     restart: unless-stopped
@@ -36,10 +36,11 @@ services:
       - db
       # - redis
   db:
-    image: bitnami/mariadb:latest
+    image: mariadb:latest
     volumes:
       - db:/var/lib/mysql
     restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
     environment:
       - MARIADB_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MARIADB_USER=${MYSQL_USER}
@@ -61,4 +62,4 @@ services:
 volumes:
   data:
   db:
-  cache:
+  # cache:
