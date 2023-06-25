@@ -29,3 +29,13 @@ REDIS_PASSWORD=123456
 NEXTCLOUD_TRUSTED_DOMAINS=localhost
 TUNNEL_TOKEN=tunnel_token
 ```
+
+## How to update?
+```
+docker-compose pull
+docker-compose up -d
+```
+
+OR 
+
+Run `update.sh`
